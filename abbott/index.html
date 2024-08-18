@@ -1,0 +1,327 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Steve Allen">
+   <meta name="GENERATOR" content="Mozilla/4.74 [en] (Win98; U) [Netscape]">
+   <title>Abbott's Home Page</title>
+<!-- saved from url=(0030)http://www.cs.bham.ac.uk/~sra/ -->
+</head>
+<body text="#000000" bgcolor="#FFFFE4" link="#0000EE" vlink="#551A8B" alink="#FF0000">
+
+<h1>
+<font color="#3333FF">Pop11 Experiments in Building Emotional Agents</font></h1>
+
+<hr ALIGN=LEFT WIDTH="600">
+<h2>
+<i>Abbott3 Experiments</i></h2>
+The Gridland toolkit can be used in two distinct modes: a) by compiling
+the control.p file and using the toolkit in the interactive GUI based mode;
+or b) by compiling the controlLite.p file and using the toolkit in the
+non-graphical mode. This later mode runs faster and is ideally suited for
+gathering experimental results. Both modes are capable of executing commands
+as a command line parameter, and so any interesting results obtained in
+the non-graphics mode can be recreated in the interactive GUI mode.
+<br>&nbsp;
+<h3>
+Running In GUI mode</h3>
+First start pop11 with the command "pop11 %x" and then, using the file
+selection menu, open the "control.p" file in the Abbott3 directory. You
+should now have the code for the "control.p" file open in a xved window.
+To compile the code type "^g l1" (control 'g' to enter the command mode
+of xved and then the command l1 to load the current file). An "output.p"
+file will be generated with the following content (don't worry about the
+warning, its an artifact of the way Abbott uses shared databases in its
+society-of-mind architecture).
+<blockquote>;;; GC-user(C) 0.05&nbsp; MEM: u 142685 + f 336546 + s 1 =
+479232
+<br>;;; GC-user(C) 0.05&nbsp; MEM: u 147004 + f 332227 + s 1 = 479232
+<br>;;; GC-auto(C) 0.07&nbsp; MEM: u 213924 + f 273484 + s 16 = 487424
+<p>;;; WARNING - PREVIOUS VALUE WAS NOT A METHOD
+<br>;;; INVOLVING:&nbsp; sim_get_data
+<br>;;; FILE&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp; /home/pg/sra/Pop/Abbott3/gl_abbott3.p&nbsp;&nbsp;
+LINE NUMBER:&nbsp; 498
+<br>;;; GC-auto(C) 0.09&nbsp; MEM: u 314952 + f 483765 + s 3 = 798720
+<br>&nbsp;
+<p>To run the
+<br>&nbsp;&nbsp; Start();
+<br>;;; GC-fixd(C) 0.11&nbsp; MEM: u 439235 + f 705592 + s 5 = 1144832
+<p>(then select "Run" from the Run menu)
+<br>;;; GC-user(C) 0.12&nbsp; MEM: u 454724 + f 690107 + s 1 = 1144832</blockquote>
+The Gridland code is executed through the Start() procedure. Place your
+cursor on the Start(); line and enter ESC d (the escape key followed by
+'d') - this compiles the current line (you could also mark the line and
+compile it that way (enter "^g ref VEDCOMMS" for a list of ved commands).
+The <a href="../Images/GridlandToolkit.gif">Gridland GUI</a> will appear
+in a window.
+<p>The Gridland code can also be executed by passing a set of commands
+as a parameter list in batch mode through the BatchStart() routine. I.e.
+<blockquote>BatchStart([enemy enemy enemy abbott abbott reset show_blank
+run]);
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+... will run with an extra 3 enemies and 2 abbotts.
+<br>&nbsp;</blockquote>
+Valid batch commands are:
+<br>&nbsp;
+<center><table>
+<tr>
+<td>new</td>
+
+<td>new experiment</td>
+</tr>
+
+<tr>
+<td>reset</td>
+
+<td>reset experiment</td>
+</tr>
+
+<tr>
+<td>ranseed ^seed</td>
+
+<td>set random number generator seed</td>
+</tr>
+
+<tr>
+<td>save</td>
+
+<td>save experiment</td>
+</tr>
+
+<tr>
+<td>open</td>
+
+<td>open experiment</td>
+</tr>
+
+<tr>
+<td>quit</td>
+
+<td>quit</td>
+</tr>
+
+<tr>
+<td>goto ^cycle</td>
+
+<td>goto cycle number</td>
+</tr>
+
+<tr>
+<td>big_step</td>
+
+<td>set one world cycle</td>
+</tr>
+
+<tr>
+<td>step</td>
+
+<td>step single cycle</td>
+</tr>
+
+<tr>
+<td>pause</td>
+
+<td>pause (cancel run command)</td>
+</tr>
+
+<tr>
+<td>run</td>
+
+<td>run</td>
+</tr>
+
+<tr>
+<td>display true/false</td>
+
+<td>enable/disable display</td>
+</tr>
+
+<tr>
+<td>&nbsp;grid {^x ^y ^cell array/nonarray}</td>
+
+<td>set grid size</td>
+</tr>
+
+<tr>
+<td>cycle false/^time</td>
+
+<td>set cycle time</td>
+</tr>
+
+<tr>
+<td>exec ^proc</td>
+
+<td>execute procedure</td>
+</tr>
+
+<tr>
+<td>exec {p1 p2 ... proc}</td>
+
+<td>execute proc(p1, p2, ...)</td>
+</tr>
+
+<tr>
+<td>remove ^agent</td>
+
+<td>remove named agent</td>
+</tr>
+
+<tr>
+<td>enemy</td>
+
+<td>add enemy (must reset before starting experiment)</td>
+</tr>
+
+<tr>
+<td>abbott</td>
+
+<td>add abbott&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"</td>
+</tr>
+
+<tr>
+<td>food</td>
+
+<td>add food&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"</td>
+</tr>
+
+<tr>
+<td>water</td>
+
+<td>add water&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"</td>
+</tr>
+
+<tr>
+<td>line</td>
+
+<td>add line object&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"</td>
+</tr>
+
+<tr>
+<td>circle</td>
+
+<td>add circle object&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"</td>
+</tr>
+
+<tr>
+<td>square</td>
+
+<td>add square object&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"</td>
+</tr>
+
+<tr>
+<td>rectangle</td>
+
+<td>add rectangle object&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"</td>
+</tr>
+
+<tr>
+<td>triangle</td>
+
+<td>add triangle object&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"</td>
+</tr>
+
+<tr>
+<td>show_blank</td>
+
+<td>show no status windows</td>
+</tr>
+
+<tr>
+<td>show_status</td>
+
+<td>show status window</td>
+</tr>
+
+<tr>
+<td>show_data</td>
+
+<td>show data window</td>
+</tr>
+
+<tr>
+<td>show_debug</td>
+
+<td>show debug window</td>
+</tr>
+
+<tr>
+<td>trace_status true/false</td>
+
+<td>enable/disable status trace</td>
+</tr>
+
+<tr>
+<td>trace_data true/false</td>
+
+<td>enable/disable data trace</td>
+</tr>
+
+<tr>
+<td>trace_sensors true/false</td>
+
+<td>enable/disable sensor trace</td>
+</tr>
+
+<tr>
+<td>trace_activation true/false</td>
+
+<td>enable/disable activation trace</td>
+</tr>
+
+<tr>
+<td>trace_debug false/^level</td>
+
+<td>enable/diable debug trace</td>
+</tr>
+
+<tr>
+<td>wait</td>
+
+<td>wait for experiment to pause/stop</td>
+</tr>
+</table></center>
+
+<br>&nbsp;
+<h3>
+Non-Graphical mode</h3>
+To save time during the acquisition of experimental results, a non-graphical
+version of the "control.p" file is available called "controlLite.p". Without
+the GUI it is meaningless to talk about an interactive mode, and so the
+non-graphical mode can only be used to execute commands through the BatchStart()
+interface. This process can be further automated by setting up script files
+to run a number of experiments sequentially - an example script is included
+in the Abbott3 directory. To run the script (in the background) type:
+<blockquote>pop11 startup.expts.p >&amp; myResults.txt &amp;
+<p>or
+<p>nice +19 pop11 startup.expts.p >&amp; myResults.txt &amp;&nbsp;&nbsp;&nbsp;&nbsp;
+(if you want to be nice to fellow users)</blockquote>
+
+<h2>
+<a NAME="Code"></a>Raw Results</h2>
+The results from the "startup.expts.p" script are available as an <a href="../Expts/results.zip">excel
+file (200k)</a>. On a 433 MHz Celeron PC a single experiment of 500 runs
+takes 13 hours. The full script contains 70 experiments and so will take
+35 days to run!. The script is merely given as an example :-)
+<p>
+<hr ALIGN=LEFT WIDTH="600">
+<br><i>Last updated by <a href="http://www.dfki.de/~allen">Steve Allen</a>
+14 January '01</i>
+<br>&nbsp;
+</body>
+</html>
