@@ -1,5 +1,3 @@
-Abbott's Home Page
-
 # Pop11 Experiments in Building Emotional Agents
 
 ## _Abbott2 and Gridland_
